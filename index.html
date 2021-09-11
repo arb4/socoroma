@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8" /> 
+<head>   
+
+           <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.0/dist/leaflet.css" /> 
+		   <script src="https://unpkg.com/leaflet@1.0.0/dist/leaflet.js"></script> 
+           <link rel="stylesheet" href="css/styledLayerControl.css" />
+		   <link rel="stylesheet" href="css/styledLayerControl.css" />
+           <script src="src/styledLayerControl.js"></script>
+		   
+		   
+		   <script type="text/javascript" src="https://cdn.rawgit.com/trabajosig/gjson/ebeec171/aaa.js"></script>
+		   <script type="text/javascript" src="https://cdn.rawgit.com/trabajosig/geojson3/3bf84813/Bapisterio.js"></script>
+		   <script type="text/javascript" src="https://cdn.rawgit.com/trabajosig/geojson3/3bf84813/Elevaciones.js"></script>
+		   <script type="text/javascript" src="https://cdn.rawgit.com/trabajosig/geojson3/3bf84813/Prebisterio.js"></script>
+		   <script type="text/javascript" src="https://cdn.rawgit.com/trabajosig/geojson3/3bf84813/Sacristia.js"></script>
+		   <script type="text/javascript" src="https://cdn.rawgit.com/trabajosig/geojson3/3bf84813/limite.js"></script>
+		   <script type="text/javascript" src="https://cdn.rawgit.com/trabajosig/geojson3/3bf84813/muro.js"></script>
+		   <script type="text/javascript" src="https://cdn.rawgit.com/trabajosig/geojson3/3bf84813/sala.js"></script>
+		   <script type="text/javascript" src="https://cdn.rawgit.com/trabajosig/geojson3/3bf84813/socotoro.js"></script>
+		   <script type="text/javascript" src="https://cdn.rawgit.com/trabajosig/geojson3/3bf84813/torre.js"></script>
+		   <script type="text/javascript" src="https://cdn.rawgit.com/trabajosig/geojson3/e26d2408/acc.js"></script>
+					 
+					 
+		   <script src="leaflet-search-master\src\leaflet-search.js"></script> 
+                   <link rel="stylesheet" href="leaflet-search-master\src\leaflet-search.css" />
+		   <script type="text/javascript" src=""></script>
+		   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+ <style>   
+        body {
+            padding: 0;
+            margin: 0;
+        }
+        html, body, #map {
+        height: 100%;
+        width: 100vw;
+        }
+	 
+ </style>    
+ 
+ </head>
+  <body>    
+  
+    
+	 
+	
+	
+	
+	
+	
+   <div id="map"></div>
+
+   
+   <script>    
+   
+   var map = L.map('map', {  
+                    center: [-18.263203, -69.602343],
+                    zoom: 21
+                    
+                });
+   
+   '8e238c9c69e54c3989ce7daadd571fb5'
+   
+	
+	var Thunderforest_OpenCycleMap = L.tileLayer('https://{s}.tile.thunderforest.com/cycle/{z}/{x}/{y}.png?apikey={apikey}', {
+	attribution: '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+	apikey: '8e238c9c69e54c3989ce7daadd571fb5',
+	maxZoom: 21
+}).addTo(map);
+    
+	   
+    
+  	   
+	   
+	   
+ 
+     function popup(feature, layer) {
+                    if (feature.properties && feature.properties.NOMBRE) {
+                        layer.bindPopup(feature.properties.NOMBRE);
+                    }
+                }
+				
+	 function popup2(feature, layer) {
+                    if (feature.properties && feature.properties.TIPO) {
+                        layer.bindPopup(feature.properties.TIPO);
+                    }
+                }
+	  function popup3(feature, layer) {
+                    if (feature.properties && feature.properties.Nombre) {
+                        layer.bindPopup(feature.properties.Nombre);
+                    }
+                } 
+	   function popup4(feature, layer) {
+                    if (feature.properties && feature.properties.Materiales) {
+                        layer.bindPopup(feature.properties.Materiales);
+                    }
+                } 
+				
+				
+				
+				
+				
+				
+ 
+    var style1 = {
+                    'color': "blue",
+                    'weight': 5,
+                    'opacity': 5,
+					'fillOpacity': 0.5
+                };
+	var style2 = {
+                    'color': "blue",
+                    'weight': 1,
+                    'opacity': 1,
+					'fillOpacity': 0.1
+                };		
+ 
+ 
+	
+ 
+ 
+	   
+    var style4 = {
+                    'color': "green",
+                    'weight': 0,
+                    'opacity': 0,
+		    'fillOpacity': 0
+                };	   
+	   
+	var lyrlaser;  
+	
+	lyrlaser = L.imageOverlay('plano.png', [[-18.262949,-69.602536],[-18.263405,-69.602152]]).addTo(map);
+
+
+    	 
+ 
+    var	aaa = L.geoJson(aaa, {
+				  style: style4,
+                  onEachFeature: popup3
+              }).addTo(map);
+			  
+			  
+    var	Bapisterio = L.geoJson(Bapisterio, {
+				  style: style4,
+                  onEachFeature: popup3
+              }).addTo(map); 
+ 
+ 
+    var Prebisterio = L.geoJson(Prebisterio, {
+				  style: style4,
+                  onEachFeature: popup3
+              }).addTo(map); 
+ 
+    var Sacristia = L.geoJson(Sacristia, {
+				  style: style4,
+                  onEachFeature: popup3
+              }).addTo(map);
+    
+	
+    
+	var sala = L.geoJson(sala, {
+				  style: style4,
+                  onEachFeature: popup3
+              }).addTo(map);
+			  
+	var socotoro = L.geoJson(socotoro, {
+				  style: style4,
+                  onEachFeature: popup3
+              }).addTo(map);	
+			  
+		  
+
+		  
+   
+    var Elevaciones = L.geoJSON(Elevaciones, {
+	style: style4,
+    onEachFeature: function (feature, layer) {
+    layer.bindPopup('<h2>'+feature.properties.Nombre+'</h2><p>Materiales: '+feature.properties.Materiales+'</p>');
+  }
+  }).addTo(map);
+  
+  
+  var muro = L.geoJSON(muro, {
+  style: style4,
+    onEachFeature: function (feature, layer) {
+    layer.bindPopup('<h2>'+feature.properties.Elevación+'</h2><p>Materiales: '+feature.properties.Material+'</p>');
+  }
+  }).addTo(map);
+	   
+	var torre = L.geoJSON(torre, {
+	style: style4,
+    onEachFeature: function (feature, layer) {
+    layer.bindPopup('<h2>'+feature.properties.Nombre+'</h2><p>Materiales: '+feature.properties.Material+'</p>');
+  }
+  }).addTo(map);   
+	 
+	   
+	   
+	   
+       /* var searchControl = new L.Control.Search({ 
+               layer: poblados,  
+               propertyName: 'NOMBRE',
+	       zoom: 12,
+	       textPlaceholder: "Buscar Poblados"
+               });
+	 
+	var searchControl2 = new L.Control.Search({ 
+               layer: azapa,  
+               propertyName: 'PROPIETARI',
+	       zoom: 9,
+	       textPlaceholder: "Buscar Propietarios Azapa"
+               }); 
+	 
+	 map.addControl(searchControl); 
+	 map.addControl(searchControl2); */ 
+		 
+		 var baseMaps = [
+					 {
+						groupName : "Mapas Base",
+						layers    : {
+							
+							"Mapa Base" :Thunderforest_OpenCycleMap
+                            					
+                            						
+						}
+					}							
+	            ];	
+		 
+		 var overlays = [
+					 {
+						groupName : "Iglesia San Francisco de Asis",
+						layers    : { 
+						
+						    
+							"Plano Iglesia" 	 	: lyrlaser
+							//"Municipalidad de Arica" 	 	: muniarica,
+							
+						}	
+					}
+	             ];
+				
+         //definir las opciones para el styledlayercontrol
+				var options = {
+		                 container_width 	: "300px",
+		                 container_maxHeight : "350px", 
+		                 group_maxHeight     : "80px",
+		                 exclusive       	: false
+	            };
+				
+		//crear el styledlayerControl 
+				var control = L.Control.styledLayerControl(baseMaps,overlays, options);
+	            map.addControl(control);
+
+        //seleccion de capas que van a mostrarse por defecto
+         		control.unSelectGroup( "Iglesia San Francisco de Asis" );
+				
+				L.control.scale().addTo(map);
+		
+		
+		
+ </script>  
+ 
+ 
+ </body>   
+ </html>
